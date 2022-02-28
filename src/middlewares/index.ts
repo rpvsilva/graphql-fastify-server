@@ -1,12 +1,11 @@
-import { isProd } from 'constants/index';
 import {
   FastifyReply,
   FastifyRequest,
   HookHandlerDoneFunction,
   RouteShorthandOptions,
 } from 'fastify';
-import { GraphQLBody, GraphQLFastifyConfig } from 'types';
-import { isIntrospectionQuery } from 'utils';
+import { GraphQLBody, GraphQLFastifyConfig } from '../types';
+import { isIntrospectionQuery } from '../utils';
 
 const disableIntrospection = (
   request: FastifyRequest,
@@ -15,7 +14,7 @@ const disableIntrospection = (
   playground: GraphQLFastifyConfig['playground'] = {}
 ) => {
   const { operationName } = request.body as GraphQLBody;
-  const { introspection = !isProd } = playground;
+  const { introspection = true } = playground;
 
   if (!introspection && isIntrospectionQuery(operationName)) {
     return reply.code(400).send(Error('IntrospectionQuery is disabled on GraphQLFastify.'));

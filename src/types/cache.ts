@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import cache from 'cache';
+import cache from '../cache';
 import { Redis } from 'ioredis';
-import { ObjectOfAny } from 'types/misc';
+import { ObjectOfAny } from '../types/misc';
 
 export type GraphqlFastifyCache = ReturnType<typeof cache>;
 

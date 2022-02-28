@@ -1,23 +1,21 @@
 const path = require('path');
 const nodeExternals = require('webpack-node-externals');
-
-const {
-  NODE_ENV = 'development'
-} = process.env;
+const TersetPlugin = require('terser-webpack-plugin');
 
 module.exports = {
   target: 'node',
   externals: [nodeExternals()],
   entry: './src/server.ts',
-  devtool: NODE_ENV === 'development' ? 'inline-source-map' : false,
-  mode: NODE_ENV,
+  mode: process.env.NODE_ENV || 'development',
+  plugins: [
+    new TersetPlugin({
+      terserOptions: {
+        mangle: false
+      }
+    })
+  ],
   module: {
     rules: [
-      {
-        test: /\.(graphql|gql)$/,
-        use: 'raw-loader',
-        exclude: /node_modules/,
-      },
       {
         test: /\.ts$/,
         use: 'ts-loader',
@@ -35,5 +33,6 @@ module.exports = {
   output: {
     filename: 'index.js',
     path: path.resolve(__dirname, 'dist'),
+    libraryTarget: 'umd'
   },
 }

@@ -1,6 +1,6 @@
 import { DefinitionNode, DocumentNode, OperationDefinitionNode, SelectionNode } from 'graphql';
-import { CachePolicy } from 'types/cache';
-import { ObjectOfAny } from 'types/misc';
+import { CachePolicy } from '../types/cache';
+import { ObjectOfAny } from '../types/misc';
 import { hashString } from './string';
 
 type CacheInformation = {

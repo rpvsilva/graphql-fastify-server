@@ -1,0 +1,68 @@
+
+{
+  "root": true,
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended",
+    "plugin:sonarjs/recommended"
+  ],
+  "plugins": ["import", "@typescript-eslint", "prettier", "sonarjs"],
+  "parser": "@typescript-eslint/parser",
+  "rules": {
+    "prettier/prettier": [
+      "error",
+      {
+        "printWidth": 100,
+        "singleQuote": true
+      }
+    ],
+    "indent": ["error", 2, { "SwitchCase": 1 }],
+    "prefer-arrow-callback": "off",
+    "prefer-destructuring": [
+      "error",
+      {
+        "VariableDeclarator": {
+          "array": false
+        }
+      }
+    ],
+    "no-console": "error",
+    "import/extensions": "off",
+    "arrow-body-style": "off",
+    "@typescript-eslint/no-explicit-any": "error",
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      { "argsIgnorePattern": "^_" }
+    ],
+    "@typescript-eslint/explicit-module-boundary-types": [
+      "warn",
+      {
+        "allowTypedFunctionExpressions": true
+      }
+    ],
+    "sort-imports": [
+      "error",
+      {
+        "ignoreDeclarationSort": true
+      }
+    ],
+    "padding-line-between-statements": [
+      "error",
+      { "blankLine": "never", "prev": "*", "next": "import" },
+      { "blankLine": "always", "prev": "*", "next": "export" },
+      { "blankLine": "always", "prev": ["const", "let", "var"], "next": "*" },
+      {
+        "blankLine": "any",
+        "prev": ["const", "let", "var"],
+        "next": ["const", "let", "var"]
+      },
+      { "blankLine": "always", "prev": "*", "next": "return" },
+      { "blankLine": "always", "prev": "*", "next": "if" },
+      { "blankLine": "always", "prev": "*", "next": "case" },
+      { "blankLine": "always", "prev": "*", "next": "default" }
+    ]
+  },
+  "ignorePatterns": ["babel.config.js", "dist", "webpack.config.js"]
+}

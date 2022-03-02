@@ -1,14 +1,13 @@
 import { renderPlaygroundPage } from 'graphql-playground-html';
 import LRU, { Lru } from 'tiny-lru';
-import { GraphQLBody, GraphQLFastifyConfig } from 'types';
+import { GraphQLBody, GraphQLFastifyConfig } from './types/server';
 import { CompiledQuery, compileQuery, isCompiledQuery } from 'graphql-jit';
 import { parse } from 'graphql';
-import { postMiddleware } from 'middlewares';
-import { GetCacheKey, GraphqlFastifyCache } from 'types/cache';
+import { postMiddleware } from './middlewares';
+import { GetCacheKey, GraphqlFastifyCache } from './types/cache';
 import cache from './cache';
 import { generateCacheKey, getCacheTtl, isIntrospectionQuery } from './utils';
 import { FastifyInstance } from 'fastify';
-import { isProd } from 'constants/index';
 
 class GraphQLFastify {
   private app: FastifyInstance | undefined;
@@ -97,7 +96,7 @@ class GraphQLFastify {
   };
 
   private configPlayground = (playgroundConfig?: GraphQLFastifyConfig['playground']) => {
-    const { enabled = !isProd, endpoint = '/' } = playgroundConfig || {};
+    const { enabled = true, endpoint = '/' } = playgroundConfig || {};
 
     if (!enabled) return;
 

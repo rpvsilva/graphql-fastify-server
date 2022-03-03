@@ -1,6 +1,6 @@
 # GraphQL Fastify Server
 
-![build badge](https://github.com/rpvsilva/graphql-fastify/actions/workflows/build_lint.yml/badge.svg) 
+![build badge](https://github.com/rpvsilva/graphql-fastify-server/actions/workflows/ci.yml/badge.svg) 
 [<img src="https://img.shields.io/npm/dt/graphql-fastify-server?color=brightgreen&logo=npm">](https://npmjs.com/package/graphql-fastify-server)
 ![version](https://img.shields.io/npm/v/graphql-fastify-server?color=brightgreen&label=version)
 [<img src="https://snyk.io/test/github/rpvsilva/graphql-fastify-server/badge.svg">](https://snyk.io/test/github/rpvsilva/graphql-fastify-server)
@@ -55,7 +55,7 @@ const cache: Cache = {
   },
 };
 
---- OR ---
+// --- OR ---
 
 const cache: Cache = {
   defaultTTL: 1000,

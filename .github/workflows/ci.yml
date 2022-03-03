@@ -3,6 +3,8 @@ name: Node CI
 on:
   pull_request:
     branches: [ main ]
+  push:
+    branches: [ main ]
 
 jobs:
   install:
@@ -59,7 +61,7 @@ jobs:
 
   lint:
     runs-on: ubuntu-latest
-    needs: build
+    needs: install
     strategy:
       matrix:
         NODE_VERSION: [16.x]

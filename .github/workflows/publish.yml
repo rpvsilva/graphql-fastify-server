@@ -1,0 +1,92 @@
+name: Release & Publish
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  install:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        NODE_VERSION: [16.x]
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/cache@v2
+        id: cache
+        with:
+          path: ./node_modules
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-modules-
+
+      - name: Use Node.js ${{ matrix.NODE_VERSION }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.NODE_VERSION }}
+
+      - name: Install
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: npm ci
+
+  release:
+    runs-on: ubuntu-latest
+    environment: prod
+    steps:
+      - uses: actions/cache@v2
+        id: cache
+        with:
+          path: ./node_modules
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-modules-
+
+      - name: Use Node.js ${{ matrix.NODE_VERSION }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.NODE_VERSION }}
+
+      - name: Install
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: npm ci
+      
+      - name: Build package
+        run: |
+          npm run build:all
+          zip -qr build.zip dist README.md LICENSE
+
+      - name: Release
+        run: |
+          VERSION=$(node -pe "require('./package.json').version")
+          gh release create v$(echo $VERSION) -F CHANGELOG.md --title "Release v$(echo $VERSION)"
+
+      - name: Upload package
+        run: |
+          VERSION=$(node -pe "require('./package.json').version")
+          gh release upload v$(echo $VERSION) build.zip
+  
+  publish:
+    runs-on: ubuntu-latest
+    needs: release
+    steps:
+      - uses: actions/cache@v2
+        id: cache
+        with:
+          path: ./node_modules
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-modules-
+
+      - name: Use Node.js ${{ matrix.NODE_VERSION }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.NODE_VERSION }}
+
+      - name: Install
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: npm ci
+
+      - name: Publish package
+        run: |
+          npm config set //registry.npmjs.org/:_authToken $NPM_TOKEN
+          npm publish

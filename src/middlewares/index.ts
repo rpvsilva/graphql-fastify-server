@@ -5,7 +5,7 @@ import {
   RouteShorthandOptions,
 } from 'fastify';
 import { GraphQLBody, GraphQLFastifyConfig } from '../types';
-import { isIntrospectionQuery } from '../utils';
+import { isIntrospectionQuery } from '../utils/cache';
 
 const disableIntrospection = (
   request: FastifyRequest,

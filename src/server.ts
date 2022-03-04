@@ -6,7 +6,7 @@ import { parse } from 'graphql';
 import { postMiddleware } from './middlewares';
 import { GetCacheKey, GraphqlFastifyCache } from './types/cache';
 import cache from './cache';
-import { generateCacheKey, getCacheTtl, isIntrospectionQuery } from './utils';
+import { generateCacheKey, getCacheTtl, isIntrospectionQuery } from './utils/cache';
 import { FastifyInstance } from 'fastify';
 
 class GraphQLFastify {

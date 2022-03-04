@@ -1,3 +1,3 @@
-# 1.0.1 - 2022-03-02
+# 1.0.3 - 2022-03-04
 
-Initial commit
+- Fixed workflow not bundling package

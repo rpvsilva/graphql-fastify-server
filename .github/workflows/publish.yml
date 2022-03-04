@@ -94,6 +94,9 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
         run: npm ci
 
+      - name: Build package
+        run: npm run build:all
+
       - name: Publish package
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

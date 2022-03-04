@@ -43,12 +43,13 @@ const getCacheableTtls = (selections: readonly SelectionNode[], cachePolicy: Cac
       if (selection.kind !== 'Field' || defaultQueryFields.includes(selection.name.value)) {
         return acc;
       }
+
       const name = selection.name.value;
       const cacheRule = cachePolicy[name];
 
       if (!cacheRule) return acc;
 
-      acc.cacheTtls = [...acc.cacheTtls, cacheRule.ttl];
+      acc.cacheTtls.push(cacheRule.ttl);
 
       if (!acc.isPrivate) acc.isPrivate = cacheRule.scope === 'PRIVATE';
 

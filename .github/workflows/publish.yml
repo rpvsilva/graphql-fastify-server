@@ -65,7 +65,7 @@ jobs:
       - name: Release
         run: |
           VERSION=$(node -pe "require('./package.json').version")
-          gh release create v$(echo $VERSION) -F CHANGELOG.md --title "Release v$(echo $VERSION)"
+          gh release create v$(echo $VERSION) -F CHANGELOG.md --title "v$(echo $VERSION)"
 
       - name: Upload package
         run: |

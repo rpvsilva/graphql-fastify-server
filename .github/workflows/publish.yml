@@ -56,21 +56,11 @@ jobs:
       - name: Install
         if: steps.cache.outputs.cache-hit != 'true'
         run: npm ci
-      
-      - name: Build package
-        run: |
-          npm run build:all
-          zip -qr build.zip dist README.md LICENSE package.json
 
       - name: Release
         run: |
           VERSION=$(node -pe "require('./package.json').version")
-          gh release create v$(echo $VERSION) -F CHANGELOG.md --title "v$(echo $VERSION)"
-
-      - name: Upload package
-        run: |
-          VERSION=$(node -pe "require('./package.json').version")
-          gh release upload v$(echo $VERSION) build.zip
+          gh release create v$(echo $VERSION) --title "v$(echo $VERSION)"
   
   publish:
     runs-on: ubuntu-latest

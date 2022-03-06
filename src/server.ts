@@ -53,7 +53,7 @@ class GraphQLFastify {
       const isIntroQuery = isIntrospectionQuery(operationName);
       const context = this.config.context?.(request) || {};
 
-      const parsedQuery = parse(query);
+      const parsedQuery = this.cache ? parse(query) : undefined;
       const { ttl, isPrivate } =
         getCacheTtl(parsedQuery, this.config.cache?.policy, operationName) || {};
 
@@ -74,7 +74,7 @@ class GraphQLFastify {
       let compiledQuery = this.queriesCache.get(queryCacheKey);
 
       if (!compiledQuery) {
-        const compilationResult = compileQuery(schema, parsedQuery, operationName);
+        const compilationResult = compileQuery(schema, parsedQuery || parse(query), operationName);
 
         if (isCompiledQuery(compilationResult)) {
           compiledQuery = compilationResult;

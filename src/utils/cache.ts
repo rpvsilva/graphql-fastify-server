@@ -18,11 +18,11 @@ export const isIntrospectionQuery = (operationName?: string): boolean => {
  * @returns It returns the ttl of the cache. If it's 0 then the query it's not cacheable
  */
 export const getCacheTtl = (
-  query: DocumentNode,
+  query?: DocumentNode,
   cachePolicy?: CachePolicy,
   operationName?: string
 ): CacheInformation | null => {
-  if (!cachePolicy) return null;
+  if (!query || !cachePolicy) return null;
   const {
     selectionSet: { selections },
   } = getOperation(query.definitions, operationName);

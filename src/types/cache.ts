@@ -5,14 +5,14 @@ import { ObjectOfAny } from '../types/misc';
 
 export type GraphqlFastifyCache = ReturnType<typeof cache>;
 
-export type Cache<C = Record<string, never>> = {
+export type Cache<Ctx = any, R = any> = {
   defaultTTL: number;
   storage: 'memory' | Redis;
-  policy?: CachePolicy<C>;
-  extraCacheKeyData?: (context: ObjectOfAny) => string | undefined;
+  policy?: CachePolicy<R>;
+  extraCacheKeyData?: (context: Ctx) => string | undefined;
 };
 
-export type CachePolicy<C = Record<string, any>> = {
+export type CachePolicy<C = ObjectOfAny> = {
   [key in keyof C]?: {
     ttl: number;
     scope?: 'PUBLIC' | 'PRIVATE';

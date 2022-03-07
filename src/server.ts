@@ -1,13 +1,14 @@
 import { renderPlaygroundPage } from 'graphql-playground-html';
 import LRU, { Lru } from 'tiny-lru';
-import { GraphQLBody, GraphQLFastifyConfig } from './types/server';
+import { GraphQLBody, GraphQLFastifyConfig, PlaygroundOptions } from './types/server';
 import { CompiledQuery, compileQuery, isCompiledQuery } from 'graphql-jit';
-import { parse } from 'graphql';
+import { DocumentNode, parse } from 'graphql';
 import { postMiddleware } from './middlewares';
 import { GetCacheKey, GraphqlFastifyCache } from './types/cache';
 import cache from './cache';
-import { generateCacheKey, getCacheTtl, isIntrospectionQuery } from './utils/cache';
+import { generateCacheKey, getCacheTtl, getOperation, isIntrospectionQuery } from './utils/cache';
 import { FastifyInstance } from 'fastify';
+import { ObjectOfAny } from 'types/misc';
 
 class GraphQLFastify {
   private app: FastifyInstance | undefined;
@@ -50,10 +51,13 @@ class GraphQLFastify {
 
     this.app?.post(path, postMiddleware(this.config), async (request, reply) => {
       const { query, operationName, variables = {} } = request.body as GraphQLBody;
-      const isIntroQuery = isIntrospectionQuery(operationName);
       const context = this.config.context?.(request) || {};
-
       const parsedQuery = parse(query);
+
+      this.runMiddlewares(context, parsedQuery, operationName);
+
+      const isIntroQuery = isIntrospectionQuery(operationName);
+
       const { ttl, isPrivate } =
         getCacheTtl(parsedQuery, this.config.cache?.policy, operationName) || {};
 
@@ -95,7 +99,7 @@ class GraphQLFastify {
     });
   };
 
-  private configPlayground = (playgroundConfig?: GraphQLFastifyConfig['playground']) => {
+  private configPlayground = (playgroundConfig?: PlaygroundOptions) => {
     const { enabled = true, endpoint = '/' } = playgroundConfig || {};
 
     if (!enabled) return;
@@ -111,6 +115,32 @@ class GraphQLFastify {
             endpoint,
           })
         );
+    });
+  };
+
+  private runMiddlewares = (
+    context: ObjectOfAny,
+    parsedQuery: DocumentNode,
+    operationName?: string
+  ) => {
+    const { middlewares } = this.config;
+
+    if (!middlewares) return;
+
+    const {
+      selectionSet: { selections },
+    } = getOperation(parsedQuery.definitions, operationName);
+
+    const fieldsName = selections.flatMap((field) =>
+      field.kind === 'Field' ? field.name.value : []
+    );
+
+    middlewares.forEach(({ handler, operations }) => {
+      const shouldHandlerRun = operations.some((op) => fieldsName.includes(op.toString()));
+
+      if (!shouldHandlerRun) return;
+
+      handler(context);
     });
   };
 }

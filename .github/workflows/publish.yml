@@ -60,7 +60,7 @@ jobs:
       - name: Release
         run: |
           VERSION=$(node -pe "require('./package.json').version")
-          gh release create v$(echo $VERSION) --title "v$(echo $VERSION)"
+          gh release create v$(echo $VERSION) --title "v$(echo $VERSION)" --generate-notes
   
   publish:
     runs-on: ubuntu-latest

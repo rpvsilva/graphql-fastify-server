@@ -10,6 +10,7 @@
 - [Usage](#usage)
   - [Using cache](#using-cache)
   - [Middlewares](#middlewares)
+- [Liveness & Readiness](#liveness--readiness)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -108,6 +109,10 @@ const middlewares: Middlewares<ContextType, Resolvers> = [
   },
 ];
 ```
+
+## Liveness & Readiness
+
+To check the health of the server you can make a GET request to the endpoint `/server-health`
 
 ## Contributing
 If you have any doubt or to point out an issue just go ahead and create a new [issue](https://github.com/rpvsilva/graphql-fastify-server/issues/new). If you want to contribute, just [check](./CONTRIBUTING.md) how. 

@@ -33,6 +33,8 @@ class GraphQLFastify {
     this.enableGraphQLRequests(path);
 
     this.configPlayground();
+
+    this.enableLivenessReadiness();
   };
 
   private getCacheKey = ({
@@ -141,6 +143,14 @@ class GraphQLFastify {
       if (!shouldHandlerRun) return;
 
       handler(context);
+    });
+  };
+
+  private enableLivenessReadiness = () => {
+    this.app?.get('/server-health', async (_, reply) => {
+      return reply.status(200).send({
+        status: 'ok',
+      });
     });
   };
 }

@@ -33,6 +33,10 @@ class GraphQLFastify {
     this.enableGraphQLRequests(path);
 
     this.configPlayground();
+
+    this.enableLivenessReadiness();
+
+    this.handleServerShutdown();
   };
 
   private getCacheKey = ({
@@ -141,6 +145,27 @@ class GraphQLFastify {
       if (!shouldHandlerRun) return;
 
       handler(context);
+    });
+  };
+
+  private enableLivenessReadiness = () => {
+    this.app?.get('/server-health', async (_, reply) => {
+      return reply.status(200).send({
+        status: 'ok',
+      });
+    });
+  };
+
+  private handleServerShutdown = () => {
+    const signals: NodeJS.Signals[] = ['SIGINT', 'SIGTERM', 'SIGILL', 'SIGHUP'];
+
+    signals.forEach((signal) => {
+      process.on(signal, async () => {
+        // eslint-disable-next-line no-console
+        console.log(`[${signal}] Shutting down gracefully...`);
+
+        await this?.app?.close();
+      });
     });
   };
 }

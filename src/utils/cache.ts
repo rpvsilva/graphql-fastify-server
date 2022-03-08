@@ -59,7 +59,7 @@ const getCacheableTtls = (selections: readonly SelectionNode[], cachePolicy: Cac
   );
 };
 
-const getOperation = (
+export const getOperation = (
   definitions: readonly DefinitionNode[],
   operationName?: string
 ): OperationDefinitionNode => {

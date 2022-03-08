@@ -9,6 +9,7 @@
 - [Installation](#installation)
 - [Usage](#usage)
   - [Using cache](#using-cache)
+  - [Middlewares](#middlewares)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -40,7 +41,7 @@ server.applyMiddleware({ app, path: '/' });
 On GraphQL Fastify Server you can use two types of cache, one is memory cache and the other is using a Redis instance. Then you inject the cache variable into the GraphQLFastify instance.
 
 ```javascript
-const cache: Cache = {
+const cache: Cache<ContextType, Resolvers> = {
   defaultTTL: 1000,
   storage: 'memory',
   policy: {
@@ -49,7 +50,7 @@ const cache: Cache = {
     },
   },
   extraCacheKeyData: (ctx) => {
-    const { locale } = ctx as ContextType;
+    const { locale } = ctx;
 
     return locale;
   },
@@ -57,7 +58,7 @@ const cache: Cache = {
 
 // --- OR ---
 
-const cache: Cache = {
+const cache: Cache<ContextType, Resolvers> = {
   defaultTTL: 1000,
   storage: new Redis({
     host: 'localhost',
@@ -69,7 +70,7 @@ const cache: Cache = {
     },
   },
   extraCacheKeyData: (ctx) => {
-    const { locale } = ctx as ContextType;
+    const { locale } = ctx;
 
     return locale;
   },
@@ -79,7 +80,7 @@ const cache: Cache = {
 Also, you can define the query scope between `PUBLIC` and `PRIVATE` for caching. This tells the cache to use the authorization token from the headers to compute the cache key.
 
 ```javascript
-const policy: CachePolicy = {
+const policy: CachePolicy<Resolvers> = {
   add: {
     ttl: 1000,
     scope: 'PUBLIC',
@@ -90,6 +91,24 @@ const policy: CachePolicy = {
   }
 }
 ```
+
+### Middlewares
+
+You can use middlewares at the Fastify and you can define in which operations you want to execute them.
+
+```javascript
+const middlewares: Middlewares<ContextType, Resolvers> = [
+  {
+    handler: (context) => {
+      const { isAutheticated } = context;
+
+      if (!isAutheticated) throw new HttpError(401, 'Not authenticated');
+    },
+    operations: ['add'],
+  },
+];
+```
+
 ## Contributing
 If you have any doubt or to point out an issue just go ahead and create a new [issue](https://github.com/rpvsilva/graphql-fastify-server/issues/new). If you want to contribute, just [check](./CONTRIBUTING.md) how. 
 

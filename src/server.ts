@@ -2,23 +2,26 @@ import { renderPlaygroundPage } from 'graphql-playground-html';
 import LRU, { Lru } from 'tiny-lru';
 import { GraphQLBody, GraphQLFastifyConfig, PlaygroundOptions } from './types/server';
 import { CompiledQuery, compileQuery, isCompiledQuery } from 'graphql-jit';
-import { DocumentNode, parse } from 'graphql';
+import { DocumentNode, GraphQLSchema, parse } from 'graphql';
 import { postMiddleware } from './middlewares';
 import { GetCacheKey, GraphqlFastifyCache } from './types/cache';
 import cache from './cache';
 import { generateCacheKey, getCacheTtl, getOperation, isIntrospectionQuery } from './utils/cache';
 import { FastifyInstance } from 'fastify';
 import { ObjectOfAny } from 'types/misc';
+import { getSchema } from 'utils/schema';
 
 class GraphQLFastify {
   private app: FastifyInstance | undefined;
   private queriesCache: Lru<CompiledQuery>;
   private config: GraphQLFastifyConfig;
   private cache: GraphqlFastifyCache | undefined;
+  private schema: GraphQLSchema;
 
   constructor(config: GraphQLFastifyConfig) {
     this.config = config;
     this.queriesCache = LRU(1024);
+    this.schema = getSchema(config);
 
     if (config.cache) {
       this.cache = cache(config.cache);
@@ -51,25 +54,25 @@ class GraphQLFastify {
   };
 
   private enableGraphQLRequests = (path = '/') => {
-    const { schema } = this.config;
+    const { cache, context } = this.config;
 
     this.app?.post(path, postMiddleware(this.config), async (request, reply) => {
-      const { query, operationName, variables = {} } = request.body as GraphQLBody;
-      const context = this.config.context?.(request) || {};
+      const { body, headers } = request;
+      const { query, operationName, variables = {} } = body as GraphQLBody;
+      const ctx = context?.(request) || {};
       const parsedQuery = parse(query);
 
-      this.runMiddlewares(context, parsedQuery, operationName);
+      this.runMiddlewares(ctx, parsedQuery, operationName);
 
       const isIntroQuery = isIntrospectionQuery(operationName);
 
-      const { ttl, isPrivate } =
-        getCacheTtl(parsedQuery, this.config.cache?.policy, operationName) || {};
+      const { ttl, isPrivate } = getCacheTtl(parsedQuery, cache?.policy, operationName) || {};
 
       const cacheKey = this.getCacheKey({
         query,
         variables,
-        authorization: isPrivate ? request.headers.authorization : undefined,
-        extraCacheKeyData: this.config.cache?.extraCacheKeyData?.(context),
+        authorization: isPrivate ? headers.authorization : undefined,
+        extraCacheKeyData: cache?.extraCacheKeyData?.(context),
       });
 
       if (this.cache && !isIntroQuery) {
@@ -82,7 +85,7 @@ class GraphQLFastify {
       let compiledQuery = this.queriesCache.get(queryCacheKey);
 
       if (!compiledQuery) {
-        const compilationResult = compileQuery(schema, parsedQuery, operationName);
+        const compilationResult = compileQuery(this.schema, parsedQuery, operationName);
 
         if (isCompiledQuery(compilationResult)) {
           compiledQuery = compilationResult;
@@ -92,7 +95,7 @@ class GraphQLFastify {
         }
       }
 
-      const executionResult = await compiledQuery.query({}, context, variables);
+      const executionResult = await compiledQuery.query({}, ctx, variables);
       const hasErrors = executionResult.errors?.length;
 
       if (this.cache && !isIntroQuery && ttl && !hasErrors && executionResult.data) {

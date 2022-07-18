@@ -16,7 +16,7 @@ const cache = (config: Cache) => {
 const redisCache = (storage: Redis) => {
   return {
     get: (key: string) => storage.get(key),
-    set: (key: string, value: string, ttl: number) => storage.set(key, value, 'ex', ttl),
+    set: (key: string, value: string, ttl: number) => storage.set(key, value, 'EX', ttl),
   };
 };
 

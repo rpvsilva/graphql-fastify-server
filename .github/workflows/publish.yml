@@ -56,7 +56,7 @@ jobs:
 
       - name: Release
         env:
-          VERSION: ${{ github.ref }}
+          VERSION: ${{ github.ref_name }}
         run: |
           gh release create v$(echo $VERSION) --title "v$(echo $VERSION)" --generate-notes
   

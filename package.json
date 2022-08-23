@@ -1,7 +1,7 @@
 {
   "name": "graphql-fastify-server",
   "type": "commonjs",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "author": "rpvsilva",
   "description": "Lightweight GraphQL server for fastify",
   "license": "MIT",

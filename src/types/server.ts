@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { FastifyRequest } from 'fastify';
 import { GraphQLSchema } from 'graphql';
-import { RenderPageOptions } from 'graphql-playground-html';
 import { ObjectOfAny } from '../types/misc';
 import { Cache } from './cache';
 import { Middlewares } from './middlewares';
@@ -24,7 +23,7 @@ type SchemaConfig =
       resolvers: ObjectOfAny;
     };
 
-export type PlaygroundOptions = RenderPageOptions & {
+export type PlaygroundOptions = {
   enabled?: boolean;
   endpoint?: string;
   introspection?: boolean;

@@ -1,4 +1,6 @@
-import { renderPlaygroundPage } from 'graphql-playground-html';
+// eslint-disable-next-line @typescript-eslint/triple-slash-reference
+/// <reference path="./types/globals.d.ts" />
+
 import LRU, { Lru } from 'tiny-lru';
 import { GraphQLBody, GraphQLFastifyConfig, PlaygroundOptions } from './types/server';
 import { CompiledQuery, compileQuery, isCompiledQuery } from 'graphql-jit';
@@ -10,6 +12,9 @@ import { generateCacheKey, getCacheTtl, getOperation, isIntrospectionQuery } fro
 import { FastifyInstance } from 'fastify';
 import { ObjectOfAny } from 'types/misc';
 import { getSchema } from 'utils/schema';
+import playgroundHTML from './playground/index.html';
+
+const REPLACE_PLAYGROUND_ENDPOINT = '<PLAYGROUND_ENDPOINT>';
 
 class GraphQLFastify {
   private app: FastifyInstance | undefined;
@@ -17,6 +22,7 @@ class GraphQLFastify {
   private config: GraphQLFastifyConfig;
   private cache: GraphqlFastifyCache | undefined;
   private schema: GraphQLSchema;
+  private graphiQLPlayground: string;
 
   constructor(config: GraphQLFastifyConfig) {
     this.config = config;
@@ -26,6 +32,11 @@ class GraphQLFastify {
     if (config.cache) {
       this.cache = cache(config.cache);
     }
+
+    this.graphiQLPlayground = playgroundHTML.replace(
+      REPLACE_PLAYGROUND_ENDPOINT,
+      config.playground?.endpoint || '/'
+    );
   }
 
   public applyMiddleware = (config: { app: FastifyInstance; path: '/' }): void => {
@@ -116,12 +127,7 @@ class GraphQLFastify {
         .headers({
           'Content-Type': 'text/html',
         })
-        .send(
-          renderPlaygroundPage({
-            ...playgroundConfig,
-            endpoint,
-          })
-        );
+        .send(this.graphiQLPlayground);
     });
   };
 

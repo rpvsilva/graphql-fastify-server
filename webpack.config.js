@@ -21,6 +21,13 @@ module.exports = {
         use: 'ts-loader',
         exclude: /node_modules/,
       },
+      {
+        test: /\.html$/i,
+        loader: 'raw-loader',
+        options: {
+          esModule: false
+        }
+      },
     ],
   },
   resolve: {
@@ -28,7 +35,7 @@ module.exports = {
       path.resolve(__dirname, 'src'),
       path.resolve(__dirname, 'node_modules'),
     ],
-    extensions: ['.ts', '.js'],
+    extensions: ['.ts', '.js', '.html'],
   },
   output: {
     filename: 'index.js',

@@ -1,7 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference
 /// <reference path="./types/globals.d.ts" />
 
-import LRU, { Lru } from 'tiny-lru';
+import { LRU, lru } from 'tiny-lru';
 import { GraphQLBody, GraphQLFastifyConfig, PlaygroundOptions } from './types/server';
 import { CompiledQuery, compileQuery, isCompiledQuery } from 'graphql-jit';
 import { DocumentNode, GraphQLSchema, parse } from 'graphql';
@@ -18,7 +18,7 @@ const REPLACE_PLAYGROUND_ENDPOINT = '<PLAYGROUND_ENDPOINT>';
 
 class GraphQLFastify {
   private app: FastifyInstance | undefined;
-  private queriesCache: Lru<CompiledQuery>;
+  private queriesCache: LRU<CompiledQuery>;
   private config: GraphQLFastifyConfig;
   private cache: GraphqlFastifyCache | undefined;
   private schema: GraphQLSchema;
@@ -26,7 +26,7 @@ class GraphQLFastify {
 
   constructor(config: GraphQLFastifyConfig) {
     this.config = config;
-    this.queriesCache = LRU(1024);
+    this.queriesCache = lru(1024);
     this.schema = getSchema(config);
 
     if (config.cache) {

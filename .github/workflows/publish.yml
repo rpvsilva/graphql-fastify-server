@@ -5,12 +5,12 @@ on:
     tags:
       - 'v*'
 
+env:
+  NODE_VERSION: 18.x
+
 jobs:
   install:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        NODE_VERSION: [16.x]
     steps:
       - uses: actions/checkout@v3
       - uses: actions/cache@v2
@@ -21,10 +21,10 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-modules-
 
-      - name: Use Node.js ${{ matrix.NODE_VERSION }}
+      - name: Use Node.js ${{ env.NODE_VERSION }}
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.NODE_VERSION }}
+          node-version: ${{ env.NODE_VERSION }}
 
       - name: Install
         if: steps.cache.outputs.cache-hit != 'true'
@@ -45,10 +45,10 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-modules-
 
-      - name: Use Node.js ${{ matrix.NODE_VERSION }}
+      - name: Use Node.js ${{ env.NODE_VERSION }}
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.NODE_VERSION }}
+          node-version: ${{ env.NODE_VERSION }}
 
       - name: Install
         if: steps.cache.outputs.cache-hit != 'true'
@@ -73,10 +73,10 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-modules-
 
-      - name: Use Node.js ${{ matrix.NODE_VERSION }}
+      - name: Use Node.js ${{ env.NODE_VERSION }}
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.NODE_VERSION }}
+          node-version: ${{ env.NODE_VERSION }}
 
       - name: Install
         if: steps.cache.outputs.cache-hit != 'true'

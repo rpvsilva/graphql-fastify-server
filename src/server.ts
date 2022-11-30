@@ -67,7 +67,7 @@ class GraphQLFastify {
   private enableGraphQLRequests = (path = '/') => {
     const { cache, context } = this.config;
 
-    this.app?.post(path, postMiddleware(this.config), async (request, reply) => {
+    this.app?.post(path, postMiddleware(this.config), async (request) => {
       const { body, headers } = request;
       const { query, operationName, variables = {} } = body as GraphQLBody;
       const ctx = context?.(request) || {};
@@ -89,7 +89,7 @@ class GraphQLFastify {
       if (this.cache && !isIntroQuery) {
         const cachedValue = await this.cache.get(cacheKey);
 
-        if (cachedValue) return reply.code(200).send(cachedValue);
+        if (cachedValue) return cachedValue;
       }
 
       const queryCacheKey = `${query}${operationName}`;
@@ -113,7 +113,7 @@ class GraphQLFastify {
         this.cache.set(cacheKey, JSON.stringify(executionResult), ttl);
       }
 
-      return reply.status(200).send(executionResult);
+      return executionResult;
     });
   };
 
@@ -158,11 +158,7 @@ class GraphQLFastify {
   };
 
   private enableLivenessReadiness = () => {
-    this.app?.get('/server-health', async (_, reply) => {
-      return reply.status(200).send({
-        status: 'ok',
-      });
-    });
+    this.app?.get('/server-health', () => ({ status: 'ok' }));
   };
 
   private handleServerShutdown = () => {

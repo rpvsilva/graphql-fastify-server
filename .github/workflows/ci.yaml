@@ -3,9 +3,6 @@ name: Node CI
 on:
   pull_request:
     branches: [ main ]
-  push:
-    branches: [ main ]
-
 env:
   NODE_VERSION: 18.x
 
@@ -13,8 +10,11 @@ jobs:
   install:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - uses: actions/cache@v2
+    - name: Checkout
+      uses: actions/checkout@v3
+    
+    - name: Cache dependencies
+      uses: actions/cache@v3
       id: cache
       with:
         path: ./node_modules

@@ -1,0 +1,34 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  pre_release:
+    name: Create Pre Release
+    runs-on: ubuntu-latest
+    environment: prerelease
+    permissions:
+      contents: write
+    steps:
+      - name: Update release draft
+        uses: release-drafter/release-drafter@v5
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT }}
+        with:
+          prerelease: true
+  
+  release:
+    name: Create Release
+    runs-on: ubuntu-latest
+    environment: production
+    needs: pre_release
+    steps:
+      - name: Update release draft
+        uses: release-drafter/release-drafter@v5
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT }}
+        with:
+          publish: true

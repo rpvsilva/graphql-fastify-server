@@ -55,13 +55,14 @@ class GraphQLFastify {
 
   private getCacheKey = ({
     query,
+    operationName,
     variables,
     authorization,
     extraCacheKeyData,
   }: GetCacheKey): string => {
     if (!this.cache) return '';
 
-    return generateCacheKey(query, variables, authorization, extraCacheKeyData);
+    return generateCacheKey(query, authorization, variables, operationName, extraCacheKeyData);
   };
 
   private enableGraphQLRequests = (path = '/') => {
@@ -82,7 +83,8 @@ class GraphQLFastify {
       const cacheKey = this.getCacheKey({
         query,
         variables,
-        authorization: isPrivate ? headers.authorization : undefined,
+        operationName,
+        authorization: isPrivate ? headers.authorization : '',
         extraCacheKeyData: cache?.extraCacheKeyData?.(context),
       });
 

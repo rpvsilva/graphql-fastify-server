@@ -21,6 +21,7 @@ export type CachePolicy<C = ObjectOfAny> = {
 
 export type GetCacheKey = {
   query: string;
+  operationName?: string;
   variables: ObjectOfAny;
   authorization?: string;
   extraCacheKeyData?: string;

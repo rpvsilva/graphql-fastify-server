@@ -17,7 +17,7 @@ const disableIntrospection = (
   const { introspection = true } = playground;
 
   if (!introspection && isIntrospectionQuery(operationName)) {
-    return reply.code(400).send(Error('IntrospectionQuery is disabled on GraphQLFastify.'));
+    return reply.code(400).send(Error('IntrospectionQuery is disabled on GraphQLFastifyServer.'));
   }
 
   return done();

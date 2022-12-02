@@ -72,13 +72,14 @@ export const getOperation = (
 
 export const generateCacheKey = (
   query: string,
+  authorizationToken = '',
   variables: ObjectOfAny = {},
-  authorizationToken?: string,
-  extraCacheKeyData?: string
+  operationName = '',
+  extraCacheKeyData = ''
 ): string => {
-  const string = `${query}${JSON.stringify(variables)}${authorizationToken || ''}${
-    extraCacheKeyData || ''
-  }`;
+  const string = `${operationName}${query}${JSON.stringify(
+    variables
+  )}${authorizationToken}${extraCacheKeyData}`;
 
   return `gfc:${hashString(string)}`;
 };

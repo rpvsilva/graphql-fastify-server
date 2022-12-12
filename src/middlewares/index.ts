@@ -7,12 +7,12 @@ import {
 import { GraphQLBody, GraphQLFastifyConfig } from '../types';
 import { isIntrospectionQuery } from '../utils/cache';
 
-const disableIntrospection = (
+export const disableIntrospection = (
   request: FastifyRequest,
   reply: FastifyReply,
   done: HookHandlerDoneFunction,
   playground: GraphQLFastifyConfig['playground'] = {}
-) => {
+): FastifyReply | void => {
   const { operationName } = request.body as GraphQLBody;
   const { introspection = true } = playground;
 

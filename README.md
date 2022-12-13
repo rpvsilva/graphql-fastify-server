@@ -35,7 +35,12 @@ const server = new GraphQLFastify({
   },
 });
 
-server.applyMiddleware({ app, path: '/' });
+server.applyMiddleware({ app, path: '/' }).then(() => {
+  app.listen({ port: +PORT }, () => {
+    console.log(`Server listening on port http://0.0.0.0:${PORT}`);
+  });
+});
+
 ```
 
 ### Using cache

@@ -2,7 +2,7 @@
 /// <reference path="./types/globals.d.ts" />
 
 import { LRU, lru } from 'tiny-lru';
-import { GraphQLBody, GraphQLFastifyConfig, PlaygroundOptions } from './types/server';
+import { FastifyInstanceGraphQL, GraphQLBody, GraphQLFastifyConfig } from './types/server';
 import { CompiledQuery, compileQuery, isCompiledQuery } from 'graphql-jit';
 import { DocumentNode, GraphQLSchema, parse } from 'graphql';
 import { postMiddleware } from './middlewares';
@@ -13,16 +13,20 @@ import { FastifyInstance } from 'fastify';
 import { ObjectOfAny } from 'types/misc';
 import { getSchema } from 'utils/schema';
 import playgroundHTML from './playground/index.html';
+import { handleSubscriptions } from 'subscriptions';
+import fastifyWebsocket from '@fastify/websocket';
+import { PubSub, subContext } from 'subscriptions/pubsub';
 
 const REPLACE_PLAYGROUND_ENDPOINT = '<PLAYGROUND_ENDPOINT>';
 
 class GraphQLFastify {
-  private app: FastifyInstance | undefined;
+  private app: FastifyInstanceGraphQL | undefined;
   private queriesCache: LRU<CompiledQuery>;
   private config: GraphQLFastifyConfig;
   private cache: GraphqlFastifyCache | undefined;
   private schema: GraphQLSchema;
   private graphiQLPlayground: string;
+  private pubSub: ReturnType<typeof PubSub> | undefined;
 
   constructor(config: GraphQLFastifyConfig) {
     this.config = config;
@@ -33,16 +37,28 @@ class GraphQLFastify {
       this.cache = cache(config.cache);
     }
 
+    if (config.subscriptions) {
+      this.pubSub = PubSub();
+    }
+
+    const replaceRegex = new RegExp(REPLACE_PLAYGROUND_ENDPOINT, 'g');
+
     this.graphiQLPlayground = playgroundHTML.replace(
-      REPLACE_PLAYGROUND_ENDPOINT,
+      replaceRegex,
       config.playground?.endpoint || '/'
     );
   }
 
-  public applyMiddleware = (config: { app: FastifyInstance; path: '/' }): void => {
+  public applyMiddleware = async (config: { app: FastifyInstance; path: '/' }): Promise<void> => {
     const { app, path } = config;
 
-    this.app = app;
+    this.app = Object.assign(app, { graphql: { schema: this.schema } });
+
+    if (app.websocketServer === undefined) {
+      await this.app.register(fastifyWebsocket, {
+        options: { maxPayload: 1048576 },
+      });
+    }
 
     this.enableGraphQLRequests(path);
 
@@ -108,7 +124,11 @@ class GraphQLFastify {
         }
       }
 
-      const executionResult = await compiledQuery.query({}, ctx, variables);
+      const executionResult = await compiledQuery.query(
+        {},
+        Object.assign(ctx, { pubsub: this.pubSub && subContext({ pubsub: this.pubSub }) }),
+        variables
+      );
       const hasErrors = executionResult.errors?.length;
 
       if (this.cache && !isIntroQuery && ttl && !hasErrors && executionResult.data) {
@@ -119,17 +139,27 @@ class GraphQLFastify {
     });
   };
 
-  private configPlayground = (playgroundConfig?: PlaygroundOptions) => {
-    const { enabled = true, endpoint = '/' } = playgroundConfig || {};
+  private configPlayground = () => {
+    const { subscriptions, playground } = this.config;
+    const { enabled = true, endpoint = '/' } = playground || {};
 
     if (!enabled) return;
 
-    this.app?.get(endpoint, async (_, reply) => {
-      return reply
-        .headers({
-          'Content-Type': 'text/html',
-        })
-        .send(this.graphiQLPlayground);
+    this.app?.route({
+      url: endpoint,
+      method: 'GET',
+      handler: (_, reply) => {
+        return reply
+          .headers({
+            'Content-Type': 'text/html',
+          })
+          .send(this.graphiQLPlayground);
+      },
+      wsHandler: (conn, req) => {
+        return !subscriptions
+          ? undefined
+          : handleSubscriptions(conn, this.config.context?.(req), this.app, this.pubSub);
+      },
     });
   };
 

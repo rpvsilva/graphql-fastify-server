@@ -45,27 +45,20 @@ jobs:
         with:
           ref: main
 
-      - name: Cache dependencies
-        uses: actions/cache@v3
-        id: cache
-        with:
-          path: ./node_modules
-          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-modules-
-
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
           node-version: ${{ env.NODE_VERSION }}
           registry-url: https://registry.npmjs.org/
+          cache: yarn
 
+      
+      - run: corepack enable
       - name: Install
-        if: steps.cache.outputs.cache-hit != 'true'
-        run: npm ci
+        run: yarn install --frozen-lockfile
 
       - name: Build package
-        run: npm run build:all
+        run: yarn build:all
 
       - name: Publish
         run: npm publish

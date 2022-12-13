@@ -1,15 +1,16 @@
-import { DocumentNode, ExecutionResult, GraphQLSchema, parse, subscribe } from 'graphql';
-import { FastifyInstanceGraphQL } from 'types/server';
+import { ExecutionResult, GraphQLSchema, parse, subscribe } from 'graphql';
+import { FastifyInstanceGraphQL, GraphQLBody } from 'types/server';
 import { PubSubType, WebSocketMessage, WebSocketType } from 'types/subcriptions';
 import WebSocket, { RawData } from 'ws';
+import { subContext } from './pubsub';
 
 export const subscriptionConnection = (
   socket: WebSocket,
+  context?: Record<string, unknown>,
   app?: FastifyInstanceGraphQL,
   pubSub?: PubSubType
 ): { close: () => void } => {
   const { schema = '' } = app?.graphql || {};
-  const test = new Map();
 
   socket.on('message', (message) => handleMessage(message));
 
@@ -18,16 +19,13 @@ export const subscriptionConnection = (
 
     switch (type) {
       case WebSocketType.CONNECTION_INIT:
-        sendMessage({ type: WebSocketType.CONNECTION_ACK });
-        break;
+        return sendMessage({ type: WebSocketType.CONNECTION_ACK });
 
       case WebSocketType.COMPLETE:
-        close();
-        break;
+        return close();
 
       case WebSocketType.SUBSCRIBE:
-        handleSubscription(payload, id);
-        break;
+        return handleSubscription(payload, id);
 
       default:
         break;
@@ -38,18 +36,14 @@ export const subscriptionConnection = (
     payload: WebSocketMessage['payload'],
     id?: string
   ): Promise<void> => {
-    const { operationName, query, variables } = payload as {
-      query: string | DocumentNode;
-      variables?: Record<string, unknown>;
-      operationName?: string;
-    };
+    if (!pubSub) return;
 
-    const document = typeof query === 'string' ? parse(query) : query;
+    const { operationName, query, variables } = payload as GraphQLBody;
 
     const result = await subscribe({
       schema: schema as GraphQLSchema,
-      document,
-      contextValue: Object.assign({}, { pubsub: pubSub }),
+      document: parse(query),
+      contextValue: Object.assign(context || {}, { pubsub: subContext({ pubsub: pubSub }) }),
       variableValues: variables,
       operationName,
     });
@@ -60,17 +54,12 @@ export const subscriptionConnection = (
       throw errors;
     }
 
-    test.set(id, pubSub);
-
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     for await (const value of result as AsyncGenerator<Record<string, any>>) {
       sendMessage({ id, type: WebSocketType.NEXT, payload: value });
     }
 
-    sendMessage({ type: WebSocketType.COMPLETE, id });
-    test.get(id)?.close?.();
-
-    test.delete(id);
+    sendMessage({ id, type: WebSocketType.COMPLETE });
   };
 
   const sendMessage = (message: WebSocketMessage): void => {

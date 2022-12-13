@@ -1,4 +1,4 @@
-import { usePubSub } from 'subscriptions/pubsub';
+import { PubSub } from 'subscriptions/pubsub';
 
 export enum WebSocketType {
   CONNECTION_INIT = 'connection_init',
@@ -15,4 +15,4 @@ export type WebSocketMessage = {
   payload?: Record<string, unknown>;
 };
 
-export type PubSubType = ReturnType<typeof usePubSub>;
+export type PubSubType = ReturnType<typeof PubSub>;

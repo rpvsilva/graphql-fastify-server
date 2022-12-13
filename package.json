@@ -46,8 +46,7 @@
     "mqemitter": "^5.0.0",
     "node-cache": "^5.1.2",
     "readable-stream": "^4.2.0",
-    "tiny-lru": "^10.0.1",
-    "ws": "^8.11.0"
+    "tiny-lru": "^10.0.1"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.3.0",

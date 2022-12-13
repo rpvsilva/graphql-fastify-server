@@ -15,7 +15,7 @@ import { getSchema } from 'utils/schema';
 import playgroundHTML from './playground/index.html';
 import { handleSubscriptions } from 'subscriptions';
 import fastifyWebsocket from '@fastify/websocket';
-import { usePubSub } from 'subscriptions/pubsub';
+import { PubSub, subContext } from 'subscriptions/pubsub';
 
 const REPLACE_PLAYGROUND_ENDPOINT = '<PLAYGROUND_ENDPOINT>';
 
@@ -26,7 +26,7 @@ class GraphQLFastify {
   private cache: GraphqlFastifyCache | undefined;
   private schema: GraphQLSchema;
   private graphiQLPlayground: string;
-  private pubSub: ReturnType<typeof usePubSub> | undefined;
+  private pubSub: ReturnType<typeof PubSub> | undefined;
 
   constructor(config: GraphQLFastifyConfig) {
     this.config = config;
@@ -38,7 +38,7 @@ class GraphQLFastify {
     }
 
     if (config.subscriptions) {
-      this.pubSub = usePubSub();
+      this.pubSub = PubSub();
     }
 
     const replaceRegex = new RegExp(REPLACE_PLAYGROUND_ENDPOINT, 'g');
@@ -126,7 +126,7 @@ class GraphQLFastify {
 
       const executionResult = await compiledQuery.query(
         {},
-        Object.assign(ctx, { pubsub: this.pubSub }),
+        Object.assign(ctx, { pubsub: this.pubSub && subContext({ pubsub: this.pubSub }) }),
         variables
       );
       const hasErrors = executionResult.errors?.length;
@@ -155,9 +155,11 @@ class GraphQLFastify {
           })
           .send(this.graphiQLPlayground);
       },
-      wsHandler: subscriptions
-        ? (...args) => handleSubscriptions(...args, this.app, this.pubSub)
-        : undefined,
+      wsHandler: (conn, req) => {
+        return !subscriptions
+          ? undefined
+          : handleSubscriptions(conn, this.config.context?.(req), this.app, this.pubSub);
+      },
     });
   };
 

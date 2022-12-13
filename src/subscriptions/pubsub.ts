@@ -1,8 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import mqemitter, { Message } from 'mqemitter';
 import { Readable } from 'readable-stream';
+import { PubSubType } from 'types/subcriptions';
 
-const PubSub = () => {
+export const PubSub = () => {
   const emitter = mqemitter();
 
   const subscribe = (topic: string, queue: Readable & { close?: () => void }): Promise<null> => {
@@ -17,7 +18,6 @@ const PubSub = () => {
       });
 
       queue.close = () => {
-        console.log('remove');
         emitter.removeListener(topic, listener);
       };
     });
@@ -30,8 +30,7 @@ const PubSub = () => {
   return { subscribe, publish };
 };
 
-export const usePubSub = () => {
-  const pubsub = PubSub();
+export const subContext = ({ pubsub }: { pubsub: PubSubType }) => {
   const queue: Readable & { close?: () => void } = new Readable({
     objectMode: true,
     // eslint-disable-next-line @typescript-eslint/no-empty-function
@@ -42,9 +41,9 @@ export const usePubSub = () => {
     return pubsub.subscribe(topic, queue).then(() => queue);
   };
 
-  const publish = (event: Message) => {
+  const publish = (topic: string, payload: Record<string, any>) => {
     return new Promise((resolve, reject) => {
-      pubsub.publish(event, (err) => {
+      pubsub.publish({ topic, payload }, (err) => {
         if (err) return reject(err);
 
         resolve(null);

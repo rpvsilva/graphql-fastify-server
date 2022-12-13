@@ -7,7 +7,6 @@ import { Middlewares } from './middlewares';
 import { TypeSource } from '@graphql-tools/utils';
 
 export type GraphQLFastifyConfig<R = any> = SchemaConfig & {
-  debug?: boolean;
   playground?: PlaygroundOptions;
   context?: (request: FastifyRequest) => ObjectOfAny;
   cache?: Cache<R>;

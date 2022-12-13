@@ -10,6 +10,7 @@
 - [Usage](#usage)
   - [Using cache](#using-cache)
   - [Middlewares](#middlewares)
+  - [Subscriptions](#subscriptions)
 - [Liveness & Readiness](#liveness--readiness)
 - [Contributing](#contributing)
 - [License](#license)
@@ -29,7 +30,6 @@ const app = fastify();
 const server = new GraphQLFastify({
   schema,
   context,
-  debug: !isProd,
   playground: {
     introspection: !isProd,
   },
@@ -108,6 +108,53 @@ const middlewares: Middlewares<ContextType, Resolvers> = [
     operations: ['add'],
   },
 ];
+```
+
+### Subscriptions
+
+To enable subscriptions you need to set to `true` the property `subscriptions` on the server initialization 
+
+```javascript
+const server = new GraphQLFastify({
+  schema,
+  context,
+  subscriptions: true
+});
+```
+
+On resolvers side, you can use the `pubsub` property available on context. With the following schema, you can use the subscriptions feature like:
+
+> `pubsub` property is only available subscriptions are enabled
+
+
+```graphql
+type Query {
+  add(x: Int!, y: Int!): Int!
+}
+
+type Subscription {
+  added(x: Int!, y: Int!): Int!
+}
+```
+
+
+```javascript
+const resolvers = {
+  Query: {
+    add: async (_: null, { x, y }: { x: number; y: number }, { pubsub }: ContextType): Promise<number> => {
+      await pubsub.publish(`add-${x}-${y}`, { add: x + y });
+
+      return x + y;
+    },
+  },
+  Subscription: {
+    added: {
+      subscribe: async (_: null, { x, y }: { x: number; y: number }, { pubsub }: ContextType) => {
+        return pubsub.subscribe(`add-${x}-${y}`);
+      },
+    },
+  },
+};
 ```
 
 ## Liveness & Readiness

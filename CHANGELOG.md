@@ -2,7 +2,28 @@
 
 All notable changes to this project will be documented in this file.
 
-## [Unreleased](https://github.com/rpvsilva/graphql-fastify-server/compare/v1.4.0...HEAD)
+## [Unreleased](https://github.com/rpvsilva/graphql-fastify-server/compare/v1.4.1...HEAD)
+
+## [v1.4.1](https://github.com/rpvsilva/graphql-fastify-server/compare/v1.4.0...v1.4.1) - 2023-01-02
+
+### What Changed 👀
+
+### 🧩 Dependency Updates
+
+<details>
+<summary>9 changes</summary>
+- chore(deps-dev): bump @typescript-eslint/eslint-plugin from 5.47.0 to 5.48.0 @dependabot (#43)
+- chore(deps): bump readable-stream from 4.2.0 to 4.3.0 @dependabot (#41)
+- chore(deps-dev): bump eslint from 8.30.0 to 8.31.0 @dependabot (#40)
+- chore(deps-dev): bump @typescript-eslint/parser from 5.47.0 to 5.48.0 @dependabot (#42)
+- chore(deps-dev): bump eslint-config-prettier from 8.5.0 to 8.6.0 @dependabot (#44)
+- chore(deps): bump fastify from 4.10.2 to 4.11.0 @dependabot (#45)
+- chore(deps-dev): bump @typescript-eslint/eslint-plugin from 5.45.1 to 5.47.0 @dependabot (#37)
+- chore(deps-dev): bump eslint from 8.29.0 to 8.30.0 @dependabot (#38)
+- chore(deps-dev): bump @typescript-eslint/parser from 5.45.1 to 5.47.0 @dependabot (#39)
+
+</details>
+**Full Changelog**: https://github.com/rpvsilva/graphql-fastify-server/compare/v1.4.0...v1.4.1
 
 ## [v1.4.0](https://github.com/rpvsilva/graphql-fastify-server/compare/v1.3.3...v1.4.0) - 2022-12-13
 

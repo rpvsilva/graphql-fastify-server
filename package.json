@@ -41,7 +41,7 @@
     "@graphql-tools/utils": "^9.1.1",
     "fastify": "^4.10.2",
     "graphql": "^16.6.0",
-    "graphql-jit": "^0.7.4",
+    "graphql-jit": "^0.8.0",
     "ioredis": "^5.2.4",
     "mqemitter": "^5.0.0",
     "node-cache": "^5.1.2",

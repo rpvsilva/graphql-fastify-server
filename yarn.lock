@@ -211,10 +211,10 @@
     minimatch "^3.1.2"
     strip-json-comments "^3.1.1"
 
-"@fastify/ajv-compiler@^3.3.1":
-  version "3.4.0"
-  resolved "https://registry.yarnpkg.com/@fastify/ajv-compiler/-/ajv-compiler-3.4.0.tgz#e001b7e234b5b704654b1d617d69fa63c348f2a7"
-  integrity sha512-69JnK7Cot+ktn7LD5TikP3b7psBPX55tYpQa8WSumt8r117PCa2zwHnImfBtRWYExreJlI48hr0WZaVrTBGj7w==
+"@fastify/ajv-compiler@^3.5.0":
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/@fastify/ajv-compiler/-/ajv-compiler-3.5.0.tgz#459bff00fefbf86c96ec30e62e933d2379e46670"
+  integrity sha512-ebbEtlI7dxXF5ziNdr05mOY8NnDiPB1XvAlLHctRt/Rc+C3LCOVW5imUVX+mhvUhnNzmPBHewUkOFgGlCxgdAA==
   dependencies:
     ajv "^8.11.0"
     ajv-formats "^2.1.1"
@@ -1667,11 +1667,11 @@ fastify-plugin@^4.0.0:
   integrity sha512-ovwFQG2qNy3jcCROiWpr94Hs0le+c7N/3t7m9aVwbFhkxcR/esp2xu25dP8e617HpQdmeDv+gFX4zagdUhDByw==
 
 fastify@^4.10.2:
-  version "4.13.0"
-  resolved "https://registry.yarnpkg.com/fastify/-/fastify-4.13.0.tgz#5726d4c63acae1b5e34c7643e233a0be8169009a"
-  integrity sha512-p9ibdFWH3pZ7KPgmfHPKGUy2W4EWU2TEpwlcu58w4CwGyU3ARFfh2kwq6zpZ5W2ZGVbufi4tZbqHIHAlX/9Z/A==
+  version "4.14.1"
+  resolved "https://registry.yarnpkg.com/fastify/-/fastify-4.14.1.tgz#be1b27a13910c74ecb8625de4fa42feab9703259"
+  integrity sha512-yjrDeXe77j9gRlSV2UJry8mcFWbD0NQ5JYjnPi4tkFjHZVaG3/BD5wxOmRzGnHPC0YvaBJ0XWrIfFPl2IHRa1w==
   dependencies:
-    "@fastify/ajv-compiler" "^3.3.1"
+    "@fastify/ajv-compiler" "^3.5.0"
     "@fastify/error" "^3.0.0"
     "@fastify/fast-json-stringify-compiler" "^4.1.0"
     abstract-logging "^2.0.1"

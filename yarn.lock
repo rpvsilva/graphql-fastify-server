@@ -3694,9 +3694,9 @@ through2@^4.0.0:
   integrity sha512-w89qg7PI8wAdvX60bMDP+bFoD5Dvhm9oLheFp5O4a2QF0cSBGsBX4qZmadPMvVqlLJBBci+WqGGOAPvcDeNSVg==
 
 tiny-lru@^10.0.0, tiny-lru@^10.0.1:
-  version "10.1.0"
-  resolved "https://registry.yarnpkg.com/tiny-lru/-/tiny-lru-10.1.0.tgz#1ad52980088666430874cd01c1e2b0a2b76e31e0"
-  integrity sha512-8nOOqPPLrvE4gcBQZcvPZbJANNIwY0Mwu1h3kklq7mraCGG/JDNcu/QBZt4HQArGClrGxmQ3V/wgHy9xmK38gQ==
+  version "10.2.2"
+  resolved "https://registry.yarnpkg.com/tiny-lru/-/tiny-lru-10.2.2.tgz#dba7e921a9f940e841a7f4e5aef1cb478ecdb07f"
+  integrity sha512-yx+e2W/6E0SBEuXG+3M1fibQyyMDbz3jd/8EPyodw+LQVcUXA6tfNGUzktEy1PgZlresc6PiC4HQiyeZM2lGzA==
 
 to-regex-range@^5.0.1:
   version "5.0.1"

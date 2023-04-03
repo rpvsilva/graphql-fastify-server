@@ -1291,12 +1291,12 @@ dot-prop@^5.1.0:
   dependencies:
     is-obj "^2.0.0"
 
-dts-bundle-generator@^7.1.0:
-  version "7.2.0"
-  resolved "https://registry.yarnpkg.com/dts-bundle-generator/-/dts-bundle-generator-7.2.0.tgz#1a06f621e33399e38c8968bbd71d65ab577e5327"
-  integrity sha512-pHjRo52hvvLDRijzIYRTS9eJR7vAOs3gd/7jx+7YVnLU8ay3yPUWGtHXPtuMBSlJYk/s4nq1SvXObDCZVguYMg==
+dts-bundle-generator@^8.0.0:
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/dts-bundle-generator/-/dts-bundle-generator-8.0.0.tgz#5ae718ecf9ef5a94fa9d3d507791cf62af6a8a8a"
+  integrity sha512-9Du4uQLRs/doabHzVDFIKsbUA9KHdPkfd0YRgsJ7rXtVSKCfuW0EsM/d2AoXw2fNgxcSfJ01/8szOy4u6ze/2g==
   dependencies:
-    typescript ">=4.5.2"
+    typescript ">=5.0.2"
     yargs "^17.6.0"
 
 electron-to-chromium@^1.4.284:
@@ -3809,15 +3809,15 @@ typed-array-length@^1.0.4:
     for-each "^0.3.3"
     is-typed-array "^1.1.9"
 
-typescript@>=4.5.2, typescript@^4.9.3:
+typescript@>=5.0.2, "typescript@^4.6.4 || ^5.0.0":
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.0.3.tgz#fe976f0c826a88d0a382007681cbb2da44afdedf"
+  integrity sha512-xv8mOEDnigb/tN9PSMTwSEqAnUvkoXMQlicOb0IUVDBSQCgBSaAAROUZYy2IcUy5qU6XajK5jjjO7TMWqBTKZA==
+
+typescript@^4.9.3:
   version "4.9.5"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.9.5.tgz#095979f9bcc0d09da324d58d03ce8f8374cbe65a"
   integrity sha512-1FXk9E2Hm+QzZQ7z+McJiHL4NW1F2EzMu9Nq9i3zAaGqibafqYwCVU6WyWAuyQRRzOlxou8xZSyXLEN8oKj24g==
-
-"typescript@^4.6.4 || ^5.0.0":
-  version "5.0.2"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.0.2.tgz#891e1a90c5189d8506af64b9ef929fca99ba1ee5"
-  integrity sha512-wVORMBGO/FAs/++blGNeAVdbNKtIh1rbBL2EyQ1+J9lClJ93KiiKe8PmFIVdXhHcyv44SL9oglmfeSsndo0jRw==
 
 unbox-primitive@^1.0.2:
   version "1.0.2"

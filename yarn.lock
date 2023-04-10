@@ -3693,10 +3693,15 @@ through2@^4.0.0:
   resolved "https://registry.yarnpkg.com/through/-/through-2.3.8.tgz#0dd4c9ffaabc357960b1b724115d7e0e86a2e1f5"
   integrity sha512-w89qg7PI8wAdvX60bMDP+bFoD5Dvhm9oLheFp5O4a2QF0cSBGsBX4qZmadPMvVqlLJBBci+WqGGOAPvcDeNSVg==
 
-tiny-lru@^10.0.0, tiny-lru@^10.0.1:
+tiny-lru@^10.0.0:
   version "10.4.1"
   resolved "https://registry.yarnpkg.com/tiny-lru/-/tiny-lru-10.4.1.tgz#dec67a62115a4cb31d2065b8116d010daac362fe"
   integrity sha512-buLIzw7ppqymuO3pt10jHk/6QMeZLbidihMQU+N6sogF6EnBzG0qtDWIHuhw1x3dyNgVL/KTGIZsTK81+yCzLg==
+
+tiny-lru@^11.0.0:
+  version "11.0.0"
+  resolved "https://registry.yarnpkg.com/tiny-lru/-/tiny-lru-11.0.0.tgz#5eab33a22a01fe4b435a0e34ef28d352875ae4b8"
+  integrity sha512-mtK699zc38JhVKqJlSaQOI8i/LjZ4ZLHHXLQIRXRFtSQOYEH6iYrzqIbGxDrTSkiJqe/lQHrlAGweZjX2jbfpQ==
 
 to-regex-range@^5.0.1:
   version "5.0.1"

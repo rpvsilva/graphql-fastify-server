@@ -254,10 +254,10 @@
   dependencies:
     fast-json-stringify "^5.7.0"
 
-"@fastify/websocket@^7.1.1":
-  version "7.2.0"
-  resolved "https://registry.yarnpkg.com/@fastify/websocket/-/websocket-7.2.0.tgz#3b39cc0c821c1334cb8ddac93d9673ce52084742"
-  integrity sha512-vhWQCT0I5a1JIKc34LXHQ2earW7kViYvhGn5x+lZr8TIOJKmx6NJk0Bw9zGWakulXhMsu/0y89QnsUnHiII9ag==
+"@fastify/websocket@^8.0.0":
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/@fastify/websocket/-/websocket-8.0.0.tgz#1295acdaf4ee3869a6089d4e4409a33364924ffd"
+  integrity sha512-7NnTJVbpWkAHwuAw9tGKJP5RBOUqLhU50xP5FMlfShWvWPZeCGioy22v8noqw1KFi+Mdo5guCMmfQRGrFfIR1w==
   dependencies:
     fastify-plugin "^4.0.0"
     ws "^8.0.0"

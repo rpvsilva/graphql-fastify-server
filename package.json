@@ -37,7 +37,7 @@
   },
   "dependencies": {
     "@fastify/websocket": "^8.0.0",
-    "@graphql-tools/schema": "^9.0.10",
+    "@graphql-tools/schema": "^10.0.0",
     "@graphql-tools/utils": "^9.1.1",
     "fastify": "^4.10.2",
     "graphql": "^16.6.0",

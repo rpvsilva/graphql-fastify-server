@@ -255,9 +255,9 @@
     fast-json-stringify "^5.7.0"
 
 "@fastify/websocket@^8.0.0":
-  version "8.0.0"
-  resolved "https://registry.yarnpkg.com/@fastify/websocket/-/websocket-8.0.0.tgz#1295acdaf4ee3869a6089d4e4409a33364924ffd"
-  integrity sha512-7NnTJVbpWkAHwuAw9tGKJP5RBOUqLhU50xP5FMlfShWvWPZeCGioy22v8noqw1KFi+Mdo5guCMmfQRGrFfIR1w==
+  version "8.1.0"
+  resolved "https://registry.yarnpkg.com/@fastify/websocket/-/websocket-8.1.0.tgz#b00f4f80646bf5c9da56ae4f92335abf0f7d324a"
+  integrity sha512-7Tk+ODgvS/S9IyPXuXDU1v5tpchAeSWFH0B3Ldz+cnBKy5+lEmuj4ncLhVUzXgn9w3ycX/Vhf1mEEkcemBFUIQ==
   dependencies:
     fastify-plugin "^4.0.0"
     ws "^8.0.0"

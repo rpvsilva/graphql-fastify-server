@@ -288,14 +288,6 @@
     "@graphql-typed-document-node/core" "^3.1.1"
     tslib "^2.4.0"
 
-"@graphql-tools/utils@^9.1.1":
-  version "9.2.1"
-  resolved "https://registry.yarnpkg.com/@graphql-tools/utils/-/utils-9.2.1.tgz#1b3df0ef166cfa3eae706e3518b17d5922721c57"
-  integrity sha512-WUw506Ql6xzmOORlriNrD6Ugx+HjVgYxt9KCXD9mHAak+eaXSwuGGPyE60hy9xaDEoXKBsG7SkG69ybitaVl6A==
-  dependencies:
-    "@graphql-typed-document-node/core" "^3.1.1"
-    tslib "^2.4.0"
-
 "@graphql-typed-document-node/core@^3.1.1":
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/@graphql-typed-document-node/core/-/core-3.1.2.tgz#6fc464307cbe3c8ca5064549b806360d84457b04"

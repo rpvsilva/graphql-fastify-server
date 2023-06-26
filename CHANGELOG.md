@@ -2,7 +2,29 @@
 
 All notable changes to this project will be documented in this file.
 
-## [Unreleased](https://github.com/rpvsilva/graphql-fastify-server/compare/v1.4.10...HEAD)
+## [Unreleased](https://github.com/rpvsilva/graphql-fastify-server/compare/v1.4.11...HEAD)
+
+## [v1.4.11](https://github.com/rpvsilva/graphql-fastify-server/compare/v1.4.10...v1.4.11) - 2023-06-26
+
+### What Changed 👀
+
+### 🧩 Dependency Updates
+
+<details>
+<summary>10 changes</summary>
+- chore(deps-dev): bump @typescript-eslint/eslint-plugin from 5.59.1 to 5.60.1 @dependabot (#131)
+- chore(deps-dev): bump @typescript-eslint/parser from 5.59.1 to 5.60.1 @dependabot (#132)
+- chore(deps-dev): bump webpack from 5.86.0 to 5.88.0 @dependabot (#133)
+- chore(deps-dev): bump eslint from 8.42.0 to 8.43.0 @dependabot (#130)
+- chore(deps): bump graphql from 16.6.0 to 16.7.1 @dependabot (#134)
+- chore(deps): bump fastify from 4.17.0 to 4.18.0 @dependabot (#125)
+- chore(deps-dev): bump webpack from 5.85.1 to 5.86.0 @dependabot (#126)
+- chore(deps-dev): bump typescript from 5.0.3 to 5.1.3 @dependabot (#124)
+- chore(deps-dev): bump eslint from 8.41.0 to 8.42.0 @dependabot (#123)
+- chore(deps-dev): bump webpack from 5.84.1 to 5.85.1 @dependabot (#122)
+
+</details>
+**Full Changelog**: https://github.com/rpvsilva/graphql-fastify-server/compare/v1.4.10...v1.4.11
 
 ## [v1.4.10](https://github.com/rpvsilva/graphql-fastify-server/compare/v1.4.9...v1.4.10) - 2023-05-30
 
@@ -34,7 +56,6 @@ All notable changes to this project will be documented in this file.
 </details>
 **Full Changelog**: https://github.com/rpvsilva/graphql-fastify-server/compare/v1.4.8...v1.4.9
 ## [v1.4.8](https://github.com/rpvsilva/graphql-fastify-server/compare/v1.4.7...v1.4.8) - 2023-05-03
-
 ### What Changed 👀
 
 ### 🧩 Dependency Updates
@@ -69,7 +90,6 @@ All notable changes to this project will be documented in this file.
 ## [v1.4.6](https://github.com/rpvsilva/graphql-fastify-server/compare/v1.4.5...v1.4.6) - 2023-04-03
 ### What Changed 👀
 - chore(deps): bump fastify from 4.14.1 to 4.15.0 @dependabot (#79)
-
 ### 🧩 Dependency Updates
 
 <details>
@@ -178,7 +198,6 @@ All notable changes to this project will be documented in this file.
 - chore(deps-dev): bump eslint from 8.28.0 to 8.29.0 @dependabot (#32)
 - chore(deps-dev): bump eslint-plugin-sonarjs from 0.16.0 to 0.17.0 @dependabot (#31)
 **Full Changelog**: https://github.com/rpvsilva/graphql-fastify-server/compare/v1.3.3...v1.4.0
-
 ## [v1.3.3](https://github.com/rpvsilva/graphql-fastify-server/compare/v1.3.3...v1.3.3) - 2022-12-02
 
 ### What Changed 👀

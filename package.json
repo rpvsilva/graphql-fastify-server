@@ -42,7 +42,7 @@
     "fastify": "^4.10.2",
     "graphql": "^16.6.0",
     "graphql-jit": "^0.8.0",
-    "ioredis": "^5.2.4",
+    "ioredis": "^5.3.2",
     "mqemitter": "^5.0.0",
     "node-cache": "^5.1.2",
     "readable-stream": "^4.2.0",

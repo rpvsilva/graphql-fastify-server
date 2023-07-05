@@ -293,6 +293,15 @@
     "@graphql-typed-document-node/core" "^3.1.1"
     tslib "^2.4.0"
 
+"@graphql-tools/utils@^10.0.1":
+  version "10.0.3"
+  resolved "https://registry.yarnpkg.com/@graphql-tools/utils/-/utils-10.0.3.tgz#e5d5b217ba643b7b67a35b50086b5d831aadb71c"
+  integrity sha512-6uO41urAEIs4sXQT2+CYGsUTkHkVo/2MpM/QjoHj6D6xoEF2woXHBpdAVi0HKIInDwZqWgEYOwIFez0pERxa1Q==
+  dependencies:
+    "@graphql-typed-document-node/core" "^3.1.1"
+    dset "^3.1.2"
+    tslib "^2.4.0"
+
 "@graphql-typed-document-node/core@^3.1.1":
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/@graphql-typed-document-node/core/-/core-3.1.2.tgz#6fc464307cbe3c8ca5064549b806360d84457b04"
@@ -1300,6 +1309,11 @@ dot-prop@^5.1.0:
   integrity sha512-QM8q3zDe58hqUqjraQOmzZ1LIH9SWQJTlEKCH4kJ2oQvLZk7RbQXvtDM2XEq3fwkV9CCvvH4LA0AV+ogFsBM2Q==
   dependencies:
     is-obj "^2.0.0"
+
+dset@^3.1.2:
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/dset/-/dset-3.1.2.tgz#89c436ca6450398396dc6538ea00abc0c54cd45a"
+  integrity sha512-g/M9sqy3oHe477Ar4voQxWtaPIFw1jTdKZuomOjhCcBx9nHUNn0pu6NopuFFrTh/TRZIKEj+76vLWFu9BNKk+Q==
 
 dts-bundle-generator@^8.0.0:
   version "8.0.0"

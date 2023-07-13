@@ -8,7 +8,7 @@ export const subscriptionConnection = (
   socket: WebSocket,
   context?: Record<string, unknown>,
   app?: FastifyInstanceGraphQL,
-  pubSub?: PubSubType
+  pubSub?: PubSubType,
 ): { close: () => void } => {
   const { schema = '' } = app?.graphql || {};
 
@@ -34,7 +34,7 @@ export const subscriptionConnection = (
 
   const handleSubscription = async (
     payload: WebSocketMessage['payload'],
-    id?: string
+    id?: string,
   ): Promise<void> => {
     if (!pubSub) return;
 

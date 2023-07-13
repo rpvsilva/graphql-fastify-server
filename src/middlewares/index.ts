@@ -11,7 +11,7 @@ export const disableIntrospection = (
   request: FastifyRequest,
   reply: FastifyReply,
   done: HookHandlerDoneFunction,
-  playground: GraphQLFastifyConfig['playground'] = {}
+  playground: GraphQLFastifyConfig['playground'] = {},
 ): FastifyReply | void => {
   const { operationName } = request.body as GraphQLBody;
   const { introspection = true } = playground;

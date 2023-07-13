@@ -20,7 +20,7 @@ export const isIntrospectionQuery = (operationName?: string): boolean => {
 export const getCacheTtl = (
   query: DocumentNode,
   cachePolicy?: CachePolicy,
-  operationName?: string
+  operationName?: string,
 ): CacheInformation | null => {
   if (!cachePolicy) return null;
   const {
@@ -55,18 +55,18 @@ const getCacheableTtls = (selections: readonly SelectionNode[], cachePolicy: Cac
 
       return acc;
     },
-    { cacheTtls: [], isPrivate: false } as { cacheTtls: number[]; isPrivate: boolean }
+    { cacheTtls: [], isPrivate: false } as { cacheTtls: number[]; isPrivate: boolean },
   );
 };
 
 export const getOperation = (
   definitions: readonly DefinitionNode[],
-  operationName?: string
+  operationName?: string,
 ): OperationDefinitionNode => {
   if (!operationName) return definitions[0] as OperationDefinitionNode;
 
   return definitions.find(
-    (def) => def.kind === 'OperationDefinition' && def.name?.value === operationName
+    (def) => def.kind === 'OperationDefinition' && def.name?.value === operationName,
   ) as OperationDefinitionNode;
 };
 
@@ -75,10 +75,10 @@ export const generateCacheKey = (
   authorizationToken = '',
   variables: ObjectOfAny = {},
   operationName = '',
-  extraCacheKeyData = ''
+  extraCacheKeyData = '',
 ): string => {
   const string = `${operationName}${query}${JSON.stringify(
-    variables
+    variables,
   )}${authorizationToken}${extraCacheKeyData}`;
 
   return `gfc:${hashString(string)}`;

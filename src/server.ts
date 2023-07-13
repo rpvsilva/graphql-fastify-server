@@ -45,7 +45,7 @@ class GraphQLFastify {
 
     this.graphiQLPlayground = playgroundHTML.replace(
       replaceRegex,
-      config.playground?.endpoint || '/'
+      config.playground?.endpoint || '/',
     );
   }
 
@@ -127,7 +127,7 @@ class GraphQLFastify {
       const executionResult = await compiledQuery.query(
         {},
         Object.assign(ctx, { pubsub: this.pubSub && subContext({ pubsub: this.pubSub }) }),
-        variables
+        variables,
       );
       const hasErrors = executionResult.errors?.length;
 
@@ -166,7 +166,7 @@ class GraphQLFastify {
   private runMiddlewares = (
     context: ObjectOfAny,
     parsedQuery: DocumentNode,
-    operationName?: string
+    operationName?: string,
   ) => {
     const { middlewares } = this.config;
 
@@ -177,7 +177,7 @@ class GraphQLFastify {
     } = getOperation(parsedQuery.definitions, operationName);
 
     const fieldsName = selections.flatMap((field) =>
-      field.kind === 'Field' ? field.name.value : []
+      field.kind === 'Field' ? field.name.value : [],
     );
 
     middlewares.forEach(({ handler, operations }) => {

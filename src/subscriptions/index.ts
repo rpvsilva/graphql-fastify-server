@@ -7,7 +7,7 @@ export const handleSubscriptions = (
   connection: SocketStream,
   context?: Record<string, unknown>,
   app?: FastifyInstanceGraphQL,
-  pubSub?: PubSubType
+  pubSub?: PubSubType,
 ): void => {
   const { socket } = connection;
 

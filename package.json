@@ -57,7 +57,7 @@
     "@typescript-eslint/parser": "^5.44.0",
     "dts-bundle-generator": "^8.0.0",
     "eslint": "^8.28.0",
-    "eslint-config-prettier": "^8.5.0",
+    "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-prettier": "^5.0.0",
     "eslint-plugin-sonarjs": "^0.20.0",

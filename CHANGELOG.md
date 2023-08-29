@@ -2,7 +2,26 @@
 
 All notable changes to this project will be documented in this file.
 
-## [Unreleased](https://github.com/rpvsilva/graphql-fastify-server/compare/v1.4.15...HEAD)
+## [Unreleased](https://github.com/rpvsilva/graphql-fastify-server/compare/v1.4.16...HEAD)
+
+## [v1.4.16](https://github.com/rpvsilva/graphql-fastify-server/compare/v1.4.15...v1.4.16) - 2023-08-29
+
+### What Changed 👀
+
+### 🧩 Dependency Updates
+
+<details>
+<summary>7 changes</summary>
+- chore(deps-dev): bump eslint from 8.46.0 to 8.48.0 @dependabot (#161)
+- chore(deps-dev): bump eslint-plugin-sonarjs from 0.20.0 to 0.21.0 @dependabot (#163)
+- chore(deps): bump fastify from 4.21.0 to 4.22.0 @dependabot (#162)
+- chore(deps-dev): bump typescript from 5.1.3 to 5.2.2 @dependabot (#160)
+- chore(deps-dev): bump @commitlint/cli from 17.6.1 to 17.7.1 @dependabot (#159)
+- chore(deps): bump graphql from 16.7.1 to 16.8.0 @dependabot (#158)
+- chore(deps-dev): bump @commitlint/config-conventional from 17.6.1 to 17.7.0 @dependabot (#157)
+
+</details>
+**Full Changelog**: https://github.com/rpvsilva/graphql-fastify-server/compare/v1.4.15...v1.4.16
 
 ## [v1.4.15](https://github.com/rpvsilva/graphql-fastify-server/compare/v1.4.14...v1.4.15) - 2023-08-14
 
@@ -32,7 +51,6 @@ All notable changes to this project will be documented in this file.
 </details>
 **Full Changelog**: https://github.com/rpvsilva/graphql-fastify-server/compare/v1.4.13...v1.4.14
 ## [v1.4.13](https://github.com/rpvsilva/graphql-fastify-server/compare/v1.4.12...v1.4.13) - 2023-07-13
-
 ### What Changed 👀
 
 ### 🧩 Dependency Updates
@@ -49,7 +67,6 @@ All notable changes to this project will be documented in this file.
 **Full Changelog**: https://github.com/rpvsilva/graphql-fastify-server/compare/v1.4.12...v1.4.13
 ## [v1.4.12](https://github.com/rpvsilva/graphql-fastify-server/compare/v1.4.11...v1.4.12) - 2023-07-03
 ### What Changed 👀
-
 ### 🧩 Dependency Updates
 
 - chore(deps-dev): bump @typescript-eslint/eslint-plugin from 5.60.1 to 5.61.0 @dependabot (#137)
@@ -83,7 +100,6 @@ All notable changes to this project will be documented in this file.
 ### What Changed 👀
 ### 🧩 Dependency Updates
 - chore(deps-dev): bump webpack from 5.83.0 to 5.84.1 @dependabot (#121)
-
 **Full Changelog**: https://github.com/rpvsilva/graphql-fastify-server/compare/v1.4.9...v1.4.10
 
 ## [v1.4.9](https://github.com/rpvsilva/graphql-fastify-server/compare/v1.4.8...v1.4.9) - 2023-05-23
@@ -114,7 +130,6 @@ All notable changes to this project will be documented in this file.
 - chore(deps): bump fastify from 4.15.0 to 4.17.0 @dependabot (#111)
 **Full Changelog**: https://github.com/rpvsilva/graphql-fastify-server/compare/v1.4.7...v1.4.8
 ## [v1.4.7](https://github.com/rpvsilva/graphql-fastify-server/compare/v1.4.6...v1.4.7) - 2023-04-26
-
 ### What Changed 👀
 
 ### 🧩 Dependency Updates
@@ -250,7 +265,6 @@ All notable changes to this project will be documented in this file.
 - refactor: unnecessary reply usage @pkulcsarnr (#18)
 ### 🐛 Bug Fixes
 - fix(cache): added operationName to cacheKey @rpvsilva (#27)
-
 ### 🧩 Dependency Updates
 
 <details>

@@ -3980,9 +3980,9 @@ through2@^4.0.0:
   integrity sha512-w89qg7PI8wAdvX60bMDP+bFoD5Dvhm9oLheFp5O4a2QF0cSBGsBX4qZmadPMvVqlLJBBci+WqGGOAPvcDeNSVg==
 
 tiny-lru@^11.0.0:
-  version "11.1.2"
-  resolved "https://registry.yarnpkg.com/tiny-lru/-/tiny-lru-11.1.2.tgz#ef8d5ac74a78fa26a9b841335348b4d71df46ddc"
-  integrity sha512-EGJRgd/nY4qMlVWCYLecHdzsN6GJRM073iqlQNk/Xq5KVUGl5zkgWYNnv5pgVClDFvVEAI+7R5wpNBOu/foI2w==
+  version "11.2.0"
+  resolved "https://registry.yarnpkg.com/tiny-lru/-/tiny-lru-11.2.0.tgz#85c57edd7c1437c9ca703833eab9198f477bbc62"
+  integrity sha512-DTmmE5orth9hNGwBrblQ8D+RMFHr93LawLJCBidSOX3TEFAEYCskzhAOS4UgtnKFGylkGYGX/IgtzKTAOrxy8A==
 
 titleize@^3.0.0:
   version "3.0.0"

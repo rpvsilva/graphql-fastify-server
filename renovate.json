@@ -1,0 +1,11 @@
+{
+    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+    "extends": [ "config:recommended" ],
+    "schedule": ["5am on Sunday"],
+    "patch": { "enabled": false },
+    "minor": { "automerge": true, "autoApprove": true },
+    "labels": ["dependencies"],
+    "prHourlyLimit": 10,
+    "prConcurrentLimit": 10,
+    "reviewers": [ "rpvsilva" ]
+}

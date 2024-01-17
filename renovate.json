@@ -1,7 +1,7 @@
 {
     "$schema": "https://docs.renovatebot.com/renovate-schema.json",
     "extends": [ "config:recommended" ],
-    "schedule": ["5am on Sunday"],
+    "schedule": ["after 10pm", "before 1am"],
     "patch": { "enabled": false },
     "minor": { "automerge": true, "autoApprove": true },
     "labels": ["dependencies"],

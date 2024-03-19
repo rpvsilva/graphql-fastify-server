@@ -52,7 +52,7 @@
     "@commitlint/cli": "^18.0.0",
     "@commitlint/config-conventional": "^18.0.0",
     "@types/node": "^20.10.4",
-    "@types/readable-stream": "^2.3.15",
+    "@types/readable-stream": "^4.0.0",
     "@types/ws": "^8.5.3",
     "@typescript-eslint/eslint-plugin": "^5.44.0",
     "@typescript-eslint/parser": "^5.44.0",

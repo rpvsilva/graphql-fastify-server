@@ -33,7 +33,7 @@
     "watch:server": "nodemon \"./dist/index.js\" --watch \"./dist\"",
     "lint": "eslint --ext .ts src",
     "lint:fix": "eslint --fix --ext .ts .",
-    "prepare": "husky install"
+    "prepare": "husky || true"
   },
   "dependencies": {
     "@fastify/websocket": "^10.0.0",

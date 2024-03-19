@@ -155,10 +155,10 @@ class GraphQLFastify {
           })
           .send(this.graphiQLPlayground);
       },
-      wsHandler: (conn, req) => {
+      wsHandler: (socket, req) => {
         return !subscriptions
           ? undefined
-          : handleSubscriptions(conn, this.config.context?.(req), this.app, this.pubSub);
+          : handleSubscriptions(socket, this.config.context?.(req), this.app, this.pubSub);
       },
     });
   };

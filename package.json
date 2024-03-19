@@ -63,7 +63,7 @@
     "eslint-plugin-prettier": "^5.0.0",
     "eslint-plugin-sonarjs": "^0.24.0",
     "file-loader": "^6.2.0",
-    "html-loader": "^4.2.0",
+    "html-loader": "^5.0.0",
     "husky": "^9.0.0",
     "nodemon": "^3.0.1",
     "npm-run-all2": "^6.0.0",

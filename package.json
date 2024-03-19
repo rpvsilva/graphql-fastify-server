@@ -33,10 +33,10 @@
     "watch:server": "nodemon \"./dist/index.js\" --watch \"./dist\"",
     "lint": "eslint --ext .ts src",
     "lint:fix": "eslint --fix --ext .ts .",
-    "prepare": "husky install"
+    "prepare": "husky || true"
   },
   "dependencies": {
-    "@fastify/websocket": "^8.2.0",
+    "@fastify/websocket": "^10.0.0",
     "@graphql-tools/schema": "^10.0.2",
     "@graphql-tools/utils": "^10.0.11",
     "fastify": "^4.24.3",

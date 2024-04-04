@@ -2,7 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
-## [Unreleased](https://github.com/rpvsilva/graphql-fastify-server/compare/v1.4.23...HEAD)
+## [Unreleased](https://github.com/rpvsilva/graphql-fastify-server/compare/v1.4.24...HEAD)
+
+## [v1.4.24](https://github.com/rpvsilva/graphql-fastify-server/compare/v1.4.23...v1.4.24) - 2024-04-04
+
+### What Changed 👀
+
+### 🧩 Dependency Updates
+
+- chore(deps): update dependency @types/node to v20.12.2 @renovate (#227)
+- chore(deps): update dependency eslint-plugin-sonarjs to ^0.25.0 @renovate (#226)
+- chore(deps): update typescript-eslint monorepo to v7.4.0 @renovate (#225)
+- chore(deps): update dependency webpack to v5.91.0 @renovate (#224)
+
+**Full Changelog**: https://github.com/rpvsilva/graphql-fastify-server/compare/v1.4.23...v1.4.24
 
 ## [v1.4.23](https://github.com/rpvsilva/graphql-fastify-server/compare/v1.4.22...v1.4.23) - 2024-03-19
 
@@ -48,7 +61,6 @@ All notable changes to this project will be documented in this file.
 </details>
 **Full Changelog**: https://github.com/rpvsilva/graphql-fastify-server/compare/v1.4.21...v1.4.22
 ## [v1.4.20](https://github.com/rpvsilva/graphql-fastify-server/compare/v1.4.19...v1.4.20) - 2023-10-30
-
 ### What Changed 👀
 
 ### 🧩 Dependency Updates
@@ -94,7 +106,6 @@ All notable changes to this project will be documented in this file.
 ### What Changed 👀
 - fix: package.json & yarn.lock to reduce vulnerabilities @rpvsilva (#167)
 ### 🧩 Dependency Updates
-
 <details>
 <summary>6 changes</summary>
 - chore(deps): bump tiny-lru from 11.1.2 to 11.2.0 @dependabot (#170)
@@ -126,7 +137,6 @@ All notable changes to this project will be documented in this file.
 - chore(deps-dev): bump eslint-plugin-sonarjs from 0.19.0 to 0.20.0 @dependabot (#154)
 **Full Changelog**: https://github.com/rpvsilva/graphql-fastify-server/compare/v1.4.14...v1.4.15
 ## [v1.4.14](https://github.com/rpvsilva/graphql-fastify-server/compare/v1.4.13...v1.4.14) - 2023-07-31
-
 ### What Changed 👀
 
 ### 🧩 Dependency Updates

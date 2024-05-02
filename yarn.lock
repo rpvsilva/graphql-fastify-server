@@ -279,9 +279,9 @@
     value-or-promise "^1.0.12"
 
 "@graphql-tools/utils@^10.0.10", "@graphql-tools/utils@^10.0.11":
-  version "10.1.2"
-  resolved "https://registry.yarnpkg.com/@graphql-tools/utils/-/utils-10.1.2.tgz#192de00e7301c0242e7305ab16bbeef76bbcec74"
-  integrity sha512-fX13CYsDnX4yifIyNdiN0cVygz/muvkreWWem6BBw130+ODbRRgfiVveL0NizCEnKXkpvdeTy9Bxvo9LIKlhrw==
+  version "10.2.0"
+  resolved "https://registry.yarnpkg.com/@graphql-tools/utils/-/utils-10.2.0.tgz#c7233dc83ba6f88207a22e3f77add53c10e675df"
+  integrity sha512-HYV7dO6pNA2nGKawygaBpk8y+vXOUjjzzO43W/Kb7EPRmXUEQKjHxPYRvQbiF72u1N3XxwGK5jnnFk9WVhUwYw==
   dependencies:
     "@graphql-typed-document-node/core" "^3.1.1"
     cross-inspect "1.0.0"

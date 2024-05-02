@@ -2,7 +2,27 @@
 
 All notable changes to this project will be documented in this file.
 
-## [Unreleased](https://github.com/rpvsilva/graphql-fastify-server/compare/v1.4.24...HEAD)
+## [Unreleased](https://github.com/rpvsilva/graphql-fastify-server/compare/v1.4.25...HEAD)
+
+## [v1.4.25](https://github.com/rpvsilva/graphql-fastify-server/compare/v1.4.24...v1.4.25) - 2024-05-02
+
+### What Changed 👀
+
+### 🧩 Dependency Updates
+
+<details>
+<summary>8 changes</summary>
+- fix(deps): update dependency @graphql-tools/utils to v10.2.0 @renovate (#236)
+- chore(deps): update dependency @commitlint/cli to v19.3.0 @renovate (#235)
+- fix(deps): update dependency ioredis to v5.4.1 @renovate (#234)
+- chore(deps): update dependency dts-bundle-generator to v9.5.1 - autoclosed @renovate (#233)
+- chore(deps): update typescript-eslint monorepo to v7.8.0 @renovate (#232)
+- chore(deps): update dependency @commitlint/config-conventional to v19.2.2 @renovate (#231)
+- chore(deps): update typescript-eslint monorepo to v7.6.0 @renovate (#230)
+- chore(deps): update typescript-eslint monorepo to v7.5.0 @renovate (#228)
+
+</details>
+**Full Changelog**: https://github.com/rpvsilva/graphql-fastify-server/compare/v1.4.24...v1.4.25
 
 ## [v1.4.24](https://github.com/rpvsilva/graphql-fastify-server/compare/v1.4.23...v1.4.24) - 2024-04-04
 
@@ -62,7 +82,6 @@ All notable changes to this project will be documented in this file.
 **Full Changelog**: https://github.com/rpvsilva/graphql-fastify-server/compare/v1.4.21...v1.4.22
 ## [v1.4.20](https://github.com/rpvsilva/graphql-fastify-server/compare/v1.4.19...v1.4.20) - 2023-10-30
 ### What Changed 👀
-
 ### 🧩 Dependency Updates
 
 - chore(deps-dev): bump @commitlint/cli from 18.0.0 to 18.2.0 @dependabot (#185)
@@ -138,7 +157,6 @@ All notable changes to this project will be documented in this file.
 **Full Changelog**: https://github.com/rpvsilva/graphql-fastify-server/compare/v1.4.14...v1.4.15
 ## [v1.4.14](https://github.com/rpvsilva/graphql-fastify-server/compare/v1.4.13...v1.4.14) - 2023-07-31
 ### What Changed 👀
-
 ### 🧩 Dependency Updates
 
 <details>

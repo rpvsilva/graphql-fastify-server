@@ -43,7 +43,7 @@
     "graphql": "^16.8.1",
     "graphql-jit": "^0.8.0",
     "ioredis": "^5.2.4",
-    "mqemitter": "^5.0.0",
+    "mqemitter": "^6.0.0",
     "node-cache": "^5.1.2",
     "readable-stream": "^4.2.0",
     "tiny-lru": "^11.0.0"

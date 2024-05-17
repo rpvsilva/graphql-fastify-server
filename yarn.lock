@@ -1782,7 +1782,7 @@ fastify@^4.24.3:
     semver "^7.5.4"
     toad-cache "^3.3.0"
 
-fastparallel@^2.3.0:
+fastparallel@^2.4.1:
   version "2.4.1"
   resolved "https://registry.yarnpkg.com/fastparallel/-/fastparallel-2.4.1.tgz#0d984a5813ffa67f30b4a5cb4cb8cbe61c7ee5a5"
   integrity sha512-qUmhxPgNHmvRjZKBFUNI0oZuuH9OlSIOXmJ98lhKPxMZZ7zS/Fi0wRHOihDSz0R1YiIOjxzOY4bq65YTcdBi2Q==
@@ -2749,13 +2749,13 @@ minimist@^1.2.0, minimist@^1.2.6, minimist@^1.2.8:
   resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.8.tgz#c1a464e7693302e082a075cee0c057741ac4772c"
   integrity sha512-2yyAR8qBkN3YuheJanUpWC5U3bb5osDywNB8RzDVlDwDHbocAJveqqj1u8+SVD7jkWT4yvsHCpWqqWqAxb0zCA==
 
-mqemitter@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/mqemitter/-/mqemitter-5.0.0.tgz#ab7a14c92cf30493c5ca4714cc4ce6c56434cbf5"
-  integrity sha512-rqNRQhGgl0W/NV+Zrx0rpAUTZcSlAtivCVUmXBUPcFYt+AeDEpoJgy5eKlFWJP6xnatONL59WIFdV0W6niOMhw==
+mqemitter@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/mqemitter/-/mqemitter-6.0.0.tgz#b0f18e13f29051385719b45a54f4b93b4e42e680"
+  integrity sha512-6+dd6arKyuX7c622gLMOSviiAIhORGNCi7r4KTft/XDetuedNZwRZWsED99nDeHPhkaftj7u7SlAbGhpFt319w==
   dependencies:
-    fastparallel "^2.3.0"
-    qlobber "^7.0.0"
+    fastparallel "^2.4.1"
+    qlobber "^8.0.1"
 
 ms@2.1.2:
   version "2.1.2"
@@ -3161,10 +3161,10 @@ punycode@^2.1.0:
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-2.3.1.tgz#027422e2faec0b25e1549c3e1bd8309b9133b6e5"
   integrity sha512-vYt7UD1U9Wg6138shLtLOvdAu+8DsC/ilFtEVHcH+wydcSpNE20AfSOduf6MkRFahL5FY7X1oU7nKVZFtfq8Fg==
 
-qlobber@^7.0.0:
-  version "7.0.1"
-  resolved "https://registry.yarnpkg.com/qlobber/-/qlobber-7.0.1.tgz#2346664844d35cb99b8d80c8dc8a74264c078c69"
-  integrity sha512-FsFg9lMuMEFNKmTO9nV7tlyPhx8BmskPPjH2akWycuYVTtWaVwhW5yCHLJQ6Q+3mvw5cFX2vMfW2l9z2SiYAbg==
+qlobber@^8.0.1:
+  version "8.0.1"
+  resolved "https://registry.yarnpkg.com/qlobber/-/qlobber-8.0.1.tgz#8a8ef18401ca451c9ebc2afe58a1b04c38f476ca"
+  integrity sha512-O+Wd1chXj5YE1DwmD+ae0bXiSLehmnS3czlC1R9FL/Nt/3q8uMS1bIHmg2lJfCoiimCxClWM8AAuJrF0EvNiog==
 
 queue-microtask@^1.2.2:
   version "1.2.3"

@@ -2,7 +2,31 @@
 
 All notable changes to this project will be documented in this file.
 
-## [Unreleased](https://github.com/rpvsilva/graphql-fastify-server/compare/v1.4.27...HEAD)
+## [Unreleased](https://github.com/rpvsilva/graphql-fastify-server/compare/v1.4.28...HEAD)
+
+## [v1.4.28](https://github.com/rpvsilva/graphql-fastify-server/compare/v1.4.27...v1.4.28) - 2024-08-26
+
+### What Changed 👀
+
+### 🧩 Dependency Updates
+
+<details>
+<summary>12 changes</summary>
+- chore(deps): update dependency webpack to v5.94.0 @renovate (#254)
+- chore(deps): update typescript-eslint monorepo to v8 @renovate (#262)
+- chore(deps): update dependency eslint-plugin-prettier to v5.2.1 @renovate (#255)
+- chore(deps): update typescript-eslint monorepo to v7.18.0 @renovate (#252)
+- chore(deps): update dependency typescript to v5.5.4 @renovate (#250)
+- fix(deps): update dependency @graphql-tools/utils to v10.5.4 @renovate (#253)
+- fix(deps): update dependency graphql to v16.9.0 @renovate (#251)
+- chore(deps): update dependency @types/node to v20.16.1 @renovate (#260)
+- chore(deps): bump micromatch from 4.0.5 to 4.0.8 @dependabot (#259)
+- chore(deps): update dependency husky to v9.1.5 @renovate (#256)
+- chore(deps): update dependency html-loader to v5.1.0 @renovate (#257)
+- chore(deps): update dependency @commitlint/cli to v19.4.0 @renovate (#258)
+
+</details>
+**Full Changelog**: https://github.com/rpvsilva/graphql-fastify-server/compare/v1.4.27...v1.4.28
 
 ## [v1.4.27](https://github.com/rpvsilva/graphql-fastify-server/compare/v1.4.26...v1.4.27) - 2024-06-21
 
@@ -19,10 +43,8 @@ All notable changes to this project will be documented in this file.
 - chore(deps): update dependency webpack to v5.92.1 @renovate (#246)
 - fix(deps): update dependency fastify to v4.28.0 @renovate (#247)
 - chore(deps): bump ws from 8.16.0 to 8.17.1 @dependabot (#248)
-
 </details>
 **Full Changelog**: https://github.com/rpvsilva/graphql-fastify-server/compare/v1.4.26...v1.4.27
-
 ## [v1.4.26](https://github.com/rpvsilva/graphql-fastify-server/compare/v1.4.25...v1.4.26) - 2024-05-17
 
 ### What Changed 👀
@@ -56,7 +78,6 @@ All notable changes to this project will be documented in this file.
 **Full Changelog**: https://github.com/rpvsilva/graphql-fastify-server/compare/v1.4.24...v1.4.25
 ## [v1.4.24](https://github.com/rpvsilva/graphql-fastify-server/compare/v1.4.23...v1.4.24) - 2024-04-04
 ### What Changed 👀
-
 ### 🧩 Dependency Updates
 
 - chore(deps): update dependency @types/node to v20.12.2 @renovate (#227)
@@ -115,7 +136,6 @@ All notable changes to this project will be documented in this file.
 - chore(deps-dev): bump @commitlint/cli from 18.0.0 to 18.2.0 @dependabot (#185)
 - chore(deps-dev): bump @commitlint/config-conventional from 18.0.0 to 18.1.0 @dependabot (#184)
 **Full Changelog**: https://github.com/rpvsilva/graphql-fastify-server/compare/v1.4.19...v1.4.20
-
 ## [v1.4.19](https://github.com/rpvsilva/graphql-fastify-server/compare/v1.4.18...v1.4.19) - 2023-10-23
 
 ### What Changed 👀
